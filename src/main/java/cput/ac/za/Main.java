@@ -10,6 +10,11 @@ public class Main {
         return n1 + n2;
     }
 
+    public int Division(int n1, int n2) {
+
+        return n1 / n2;
+    }
+
     public String nullTest(String notEmpty){
 
         if (notEmpty == "")
