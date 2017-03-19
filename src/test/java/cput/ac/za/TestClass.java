@@ -1,5 +1,6 @@
 package cput.ac.za;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,20 +10,30 @@ import org.testng.annotations.Test;
 public class TestClass {
 
     @Test
-    private void additionTest()
+    private void additionTest() throws Exception
     {
-        Addition a1 = new Addition();
+        Main a1 = new Main();
 
         int expected = 9;
-        int result = a1.Addition(5,4);
+        int result = a1.Addition(8,1);
         Assert.assertEquals(result,expected);
-        System.out.println("Addition Test " +"Result: " +result+" Expected: "+expected);
+        System.out.println("Main Test " +"Result: " +result+" Expected: "+expected);
     }
 
     @Test
-    private void notNullTest()
+    private void intergerTest() throws Exception
     {
-        Nullness n1 = new Nullness();
+        Main a2 = new Main();
+
+        int result = a2.Addition(8,1);
+        Assert.assertEquals(result,9);
+        System.out.println("Interger Test: " +result+ "Expected result is Integer: " +9);
+    }
+
+    @Test
+    private void notNullTest() throws Exception
+    {
+        Main n1 = new Main();
 
         String result = n1.nullTest("Hello");
         Assert.assertNotNull("Will pass as string is present",result);
@@ -30,9 +41,9 @@ public class TestClass {
     }
 
     @Test
-    private void nullTest()
+    private void nullTest() throws Exception
     {
-        Nullness n2 = new Nullness();
+        Main n2 = new Main();
 
         String result = n2.nullTest(null);
         String expected = null;
@@ -41,25 +52,57 @@ public class TestClass {
     }
 
     @Test
-    public void floatTest()
+    public void floatTest() throws Exception
     {
-        Float f1 = new Float();
+        Main f1 = new Main();
 
-        double result = f1.floatingPoint(5.00,3.20);
-        double expected = 8.20;
-        Assert.assertEquals (expected,result,0.01);
-        System.out.println("Float Test "+" Result: "+ result +" Expected: " +expected);
+        double result = f1.floatingPoint(8.50,9.24);
+        Assert.assertEquals (17.74,result,0.01);
+        System.out.println("Float Test: "+"Result: "+ result +" Expected: " + 17.74 );
     }
 
     @Test
-    public void equalityTest()
+    public void equalityTest() throws Exception
     {
-        Equality e1 = new Equality();
+        Main e1 = new Main();
 
-        int result1 = e1.value(5);
-        int result2 = e1.value(5);
-        Assert.assertSame(result1,result2,"5");
-        System.out.println("Equality Test "+" Result 1: "+ result1 +" Result 2: " +result2 +" Expected: 5");
+        String result1 = e1.value("TestValue");
+        String result2 = e1.value("TestValue");
 
+        Assert.assertSame(result1,result2,"TestValue");
+        System.out.println("Equality Test "+" Result 1: "+ result1 +" Result 2: " +result2 +" Expected: TestValue");
+
+    }
+
+    @Test
+    public void testIsEven() {
+
+        boolean answer = true;
+        boolean value;
+        double num = 6;
+
+        Main i1 = new Main();
+        value = i1.isEven(num);
+
+        Assert.assertEquals(answer,value);
+    }
+
+    @Test(timeOut = 1000)
+    public void TimeOutTest() throws Exception
+    {
+        Main m4 = new Main();
+        m4.nullTest("");
+        Assert.assertNotNull("Value is a null",m4.nullTest(""));
+        while(true);
+    }
+
+    @Ignore
+    private void ignoreTest() throws Exception
+    {
+        Main a2 = new Main();
+
+        int result = a2.Addition(8,1);
+        Assert.assertEquals(result,9);
+        System.out.println("Interger Test: " +result+ "Expected result is Integer: " +9);
     }
 }

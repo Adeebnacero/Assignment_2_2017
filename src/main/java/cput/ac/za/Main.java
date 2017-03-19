@@ -5,11 +5,40 @@ package cput.ac.za;
  */
 public class Main {
 
-    public static void main (String [] args){
+    public int Addition(int n1, int n2){
 
-        //Division d1 = new Division();
+        return n1 + n2;
+    }
 
+    public String nullTest(String notEmpty){
 
+        if (notEmpty == "")
+            return "Null";
+        else
+            return notEmpty;
+    }
 
+    public String value(String a){
+
+        return a;
+    }
+
+    public double floatingPoint(double a, double b){
+
+        return a + b;
+    }
+
+    public boolean isEven(double num)
+    {
+        if(num%2 == 0)
+        {
+            System.out.print(true);
+            return true;
+        }
+        else
+        {
+            System.out.print(false);
+            return false;
+        }
     }
 }
